@@ -19,6 +19,17 @@ public:
    boost::asio::ip::tcp::socket& socket();
 
    void start();
+
+private:
+   void handle_read(const boost::system::error_code& ec, std::size_t bytes_transfered);
+   void handle_write(const boost::system::error_code& ec);
+   boost::asio::io_service::strand starnd;
+   boost::asio::ip::tcp::socket socket_;
+   RequestHandler& request_handler;
+   boost::array<char, 8192> buffer;
+   Request request;
+   RequestParser request_parser;
+   Reply reply;
 };
 
 typedef boost::shared_ptr<Connection> ConnectionPtr;
