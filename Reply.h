@@ -20,7 +20,7 @@ struct Reply
 
    std::vector<boost::asio::const_buffer> to_buffers();
 
-   static Reply stoc_reply(status_type status);
+   static Reply stock_reply(status_type status);
 };
 
 #endif
